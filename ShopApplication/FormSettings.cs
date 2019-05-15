@@ -15,7 +15,7 @@ namespace ShopApplication
     public partial class FormSettings : Form
     {
         MainForm mainForm;
-        AppConfig appConfig;
+        //AppConfig appConfig;
 
         public FormSettings(MainForm parentForm)
         {
@@ -33,16 +33,17 @@ namespace ShopApplication
             //    < add key = "UserPassword" value = "" />
 
             //mainForm.appConfig = new AppConfig();
-            appConfig = new AppConfig();
 
-            this.txbSerwer.Text = appConfig.connection.serverName;
-            this.txbBaza.Text = appConfig.connection.databaseName;
-            this.txbUzytkownik.Text = appConfig.connection.userName;
-            this.txbHaslo.Text = appConfig.connection.userPassword;
-            //this.txbSerwer.Text = mainForm.appConfig.connection.serverName;
-            //this.txbBaza.Text = mainForm.appConfig.connection.databaseName;
-            //this.txbUzytkownik.Text = mainForm.appConfig.connection.userName;
-            //this.txbHaslo.Text = mainForm.appConfig.connection.userPassword;
+            //appConfig = new AppConfig();
+
+            //this.txbSerwer.Text = appConfig.connection.serverName.ToString();
+            //this.txbBaza.Text = appConfig.connection.databaseName.ToString();
+            //this.txbUzytkownik.Text = appConfig.connection.userName.ToString();
+            //this.txbHaslo.Text = appConfig.connection.userPassword.ToString();
+            this.txbSerwer.Text = mainForm.appConfig.connection.serverName;
+            this.txbBaza.Text = mainForm.appConfig.connection.databaseName;
+            this.txbUzytkownik.Text = mainForm.appConfig.connection.userName;
+            this.txbHaslo.Text = mainForm.appConfig.connection.userPassword;
             //this.txbSerwer.Text = ConfigurationManager.AppSettings["SerwerName"];
             //this.txbBaza.Text = ConfigurationManager.AppSettings["DatabaseName"];
             //this.txbUzytkownik.Text = ConfigurationManager.AppSettings["UserName"];
@@ -58,11 +59,11 @@ namespace ShopApplication
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            MainForm form = new MainForm(appConfig);
-            form.gridViewManager.RefillData();
+            //MainForm form = new MainForm(appConfig);
+            //mainForm.gridViewManager.RefillData();
             //mainForm.Show();
             this.Close();
-            mainForm.Show();
+            //mainForm.Show();
             //MainForm mainForm = new MainForm();
 
         }
@@ -78,12 +79,9 @@ namespace ShopApplication
                 {
                     MessageBox.Show("Test połączenia przebiegł pozytywnie.\nDane zostaną zaktualizowane w pliklu konfiguracyjnym");
                     connection.SaveToConfigFile();
-                    appConfig.connection = connection;
-                    appConfig.connectionOK = true;
-                    //this.mainForm.appConfig.connection = connection;
-                    //this.mainForm.appConfig.connectionOK = true;
-                    //this.mainForm.gridViewManager.RefillData();
-
+                    //appConfig.connection = connection;
+                    //appConfig.connectionOK = true;
+                    this.mainForm.InitGridView(connection);
                 }
                 else
                 {

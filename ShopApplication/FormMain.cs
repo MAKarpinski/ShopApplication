@@ -20,13 +20,14 @@ namespace ShopApplication
         public MainForm(AppConfig config = null)
         {
             InitializeComponent();
+            gridViewManager = new GridViewManager();
 
             if (config == null)
                 appConfig = new AppConfig();
             else
                 appConfig = config;
 
-            gridViewManager = new GridViewManager();
+
 
 
             //CreateProductAddingWithPriceTest();
@@ -44,18 +45,24 @@ namespace ShopApplication
             if (!appConfig.connectionOK)
             {
                 FormSettings settingsForm = new FormSettings(this);
-                this.Close();
+                //this.Close();
                 settingsForm.ShowDialog();
             }
+            else
+                gridViewManager.InitializeDataGridView(this.dataGridView1, appConfig.connection);
 
-            gridViewManager.InitializeDataGridView(this.dataGridView1, appConfig.connection);
         }
 
-
+        public void InitGridView(DBConnection connection)
+        {
+            this.appConfig.connection = connection;
+            this.appConfig.connectionOK = true;
+            gridViewManager.InitializeDataGridView(this.dataGridView1, connection);
+        }
 
         private void CreateTableTest()
         {
-            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB5", "sa", "P@ssw0rd");
+            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB5", "", "");
             DBTableTest.DBTestTableCreator testCreator = new DBTableTest.DBTestTableCreator();
             testCreator.CreateTest(Table.Product, dbConn);
 
@@ -64,7 +71,7 @@ namespace ShopApplication
 
         private void CreateDBTest()
         {
-            DBData.DBCreate dbCreate = new DBData.DBCreate(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB8", "sa", "P@ssw0rd", "C:\\Projekty");
+            DBData.DBCreate dbCreate = new DBData.DBCreate(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB8", "", "", "C:\\Projekty");
 
             if (dbCreate.Create())
             {
@@ -78,14 +85,11 @@ namespace ShopApplication
         private void ErrorTest()
         {
             AppError.SaveError("Error test");
-  
         }
 
         private void ConnectionTest()
         {
-
-
-            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB", "sa", "P@ssw0rd");
+            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB", "", "");
             if (dbConn.TestConnection())
             {
                 MessageBox.Show("Połaczenie z Bazą Danych jest OK");
@@ -101,7 +105,7 @@ namespace ShopApplication
 
         private void CreateProductAddingWithPriceTest()
         {
-            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB", "sa", "P@ssw0rd");
+            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB", "", "");
             DBTableTest.DBTestTableCreator testCreator = new DBTableTest.DBTestTableCreator();
             testCreator.AddingRecordTest(Table.Product, DBTableTest.Test.ProduktCena, dbConn);
         }
@@ -125,8 +129,6 @@ namespace ShopApplication
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitApplication();
-
-            
         }
 
         private void btnChangeSettings_Click(object sender, EventArgs e)

@@ -23,11 +23,16 @@ namespace ShopApplication.Models
             string uzytkownik = ConfigurationManager.AppSettings[Setting.UserName.ToString()];
             string haslo = ConfigurationManager.AppSettings[Setting.UserPassword.ToString()];
 
+            connection = new DBConnection(serwer, baza, uzytkownik, haslo);
+
             if (serwer == "" || baza == "" || uzytkownik == "" || haslo == "")
+            {
                 connectionOK = false;
+                
+            }
             else
             {
-                connection = new DBConnection(serwer, baza, uzytkownik, haslo);
+                //connection = new DBConnection(serwer, baza, uzytkownik, haslo);
                 if (connection.TestConnection())
                     connectionOK = true;
                 else
