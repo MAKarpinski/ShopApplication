@@ -12,6 +12,10 @@ namespace ShopApplication.Models
     //{
         class DBProduct : DBTable
         {
+            /// <summary>
+            /// DBProduct Constructor
+            /// </summary>
+            /// <param name="connection">Connection data to DB</param>
             public DBProduct(DBConnection connection)
             {
                 //Initialization
@@ -29,6 +33,9 @@ namespace ShopApplication.Models
                     "(Id INT NOT NULL PRIMARY KEY IDENTITY(1, 1), name Varchar(20) NOT NULL, ean NUMERIC (10) NOT NULL UNIQUE); ";
             }
 
+        /// <summary>
+        /// Function creates Product table in DB
+        /// </summary>
             public override void Create()
             {
                 using (sqlConnection = new SqlConnection(dbConnection.connectionString))
@@ -139,11 +146,15 @@ namespace ShopApplication.Models
                 AddRecord(product.name, product.ean);
             }
 
+
+
         /// <summary>
-        /// 
+        /// Function add record to Product and Product Price table
         /// </summary>
-        /// <param name="product"></param>
-        /// <param name="price">Produc proce</param>
+        /// <param name="name">Product name</param>
+        /// <param name="ean">Produc ean</param>
+        /// <param name="name">Price net</param>
+        /// <param name="ean">Price tax</param>
         public void AddRecord(string name, int ean, decimal net, int tax)
         {
             try
@@ -195,7 +206,7 @@ namespace ShopApplication.Models
         }
 
         /// <summary>
-        /// 
+        /// Function Update Product Data 
         /// </summary>
         /// <param name="id">Id product to update</param>
         /// <param name="name">New Name od poroduct</param>
@@ -240,10 +251,10 @@ namespace ShopApplication.Models
                 }
             }
 
-            public void UpdateRecord(Product product)
-            {
+        public void UpdateRecord(Product product)
+        {
                 UpdateRecord(product.id, product.name, product.ean);
-            }
+        }
 
         public void UpdateRecord(Product product, Price price)
         {
@@ -297,6 +308,10 @@ namespace ShopApplication.Models
             }
         }
 
+        /// <summary>
+        /// Function Delete Data from table Price
+        /// </summary>
+        /// <param name="id"></param>
         public override void DeleteRecord(int id)
         {
             try
@@ -390,6 +405,10 @@ namespace ShopApplication.Models
             }
         }
 
+        /// <summary>
+        /// Function return Product Data With Joined Price
+        /// </summary>
+        /// <returns>Product with price</returns>
         public DataTable GetData()
         {
             DataTable prodTable = new DataTable();

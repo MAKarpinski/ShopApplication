@@ -24,8 +24,6 @@ namespace ShopApplication.Models
         protected SqlConnection sqlConnection { get; set; }
         protected DBConnection dbConnection { get; set; }
 
-
-
         /// <summary>
         /// Function creates tabl    
         /// </summary>
@@ -70,9 +68,6 @@ namespace ShopApplication.Models
         /// </summary>
         public abstract void AddRecord();
 
-
-
-
         /// <summary>
         /// Function deletes object from table
         /// </summary>
@@ -108,17 +103,14 @@ namespace ShopApplication.Models
                         sqlConnection.Close();
                     }
                 }
-
             }
             else
             {
-
                 //MessageBox.Show("Please Select Record to Delete");
             }
 
         }
 
-      
         //public void UpdateRecord();
     }
    

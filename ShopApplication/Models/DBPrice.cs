@@ -17,6 +17,10 @@ namespace ShopApplication.Models
             //Net        as decimal (5,2) default 0.00
             //Tax        as integer default 23
 
+            /// <summary>
+            /// DBPrice Vontruction
+            /// </summary>
+            /// <param name="connection">Connection data to DB</param>
             public DBPrice(DBConnection connection)
             {
                 //dBConnection = config;
@@ -36,6 +40,9 @@ namespace ShopApplication.Models
 
             }
 
+        /// <summary>
+        /// Function creates Price table in DB
+        /// </summary>
             public override void Create()
             {
                 using (sqlConnection = new SqlConnection(dbConnection.connectionString))
@@ -62,7 +69,7 @@ namespace ShopApplication.Models
             }
 
             /// <summary>
-            /// Function Sets Default Price values ( for 
+            /// Function Sets Default Price values 
             /// </summary>
             /// <param name="id"></param>
             public void AddRecord(int id)
@@ -101,6 +108,12 @@ namespace ShopApplication.Models
                 }
             }
 
+        /// <summary>
+        /// Function adds data into Price table
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="net"></param>
+        /// <param name="tax"></param>
             public void AddRecord(int id, decimal net, int tax)
             {
                 try
@@ -146,7 +159,7 @@ namespace ShopApplication.Models
             }
 
             /// <summary>
-            /// 
+            ///  Function Updates data in Price table
             /// </summary>
             /// <param name="id"></param>
             /// <param name="net"></param>

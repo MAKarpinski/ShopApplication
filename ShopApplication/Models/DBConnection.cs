@@ -29,7 +29,7 @@ namespace ShopApplication.Models
 
 
         /// <summary>
-        /// Constructor
+        /// DBConnection obj Constructor
         /// </summary>
         /// <param name="serverName"></param>
         /// <param name="databaseName"></param>
@@ -42,13 +42,11 @@ namespace ShopApplication.Models
             this.userName = userName;
             this.userPassword = userPassword;
 
-            //string connectionStr = @"Data Source=USER-KOMPUTER\SERWERSQL2012;Initial Catalog=ShopDB;User ID=sa;Password=P@ssw0rd";
-            //connectionString = @"Data Source = USER - KOMPUTER\SERWERSQL2012; Initial Catalog = ShopDB; User ID = sa; Password = P@ssw0rd;";
             connectionString = @"Data Source = " + serverName + "; Initial Catalog = " + databaseName + "; User ID = " + userName + "; Password = " + userPassword + ";";
         }
 
         /// <summary>
-        /// 
+        /// Function Tests Connection to DB
         /// </summary>
         /// <returns></returns>
         public bool TestConnection()
@@ -70,6 +68,10 @@ namespace ShopApplication.Models
 
         }
 
+        /// <summary>
+        /// Function Saves data from form in Config file
+        /// </summary>
+        /// <returns></returns>
         public bool SaveToConfigFile()
         {
 

@@ -10,8 +10,6 @@ namespace ShopApplication.Models
 {
     public class GridViewManager
     {
-
-
         public enum Column
         { Id, Nazwa, Ean, Cena, Podatek}
 
@@ -69,6 +67,9 @@ namespace ShopApplication.Models
             }
         }
 
+        /// <summary>
+        /// Function refresh data in GridView
+        /// </summary>
         public void RefillData()
         { 
             try
@@ -96,6 +97,11 @@ namespace ShopApplication.Models
             }
         }
 
+        /// <summary>
+        /// Function Initializate GridViewManager Data
+        /// </summary>
+        /// <param name="dataGridView"></param>
+        /// <param name="dbConnection"></param>
         public void InitializeDataGridViewByList(DataGridView dataGridView, DBConnection dbConnection)
         {
             this.dataGridView = dataGridView;
@@ -118,7 +124,10 @@ namespace ShopApplication.Models
         }
 
 
-
+        /// <summary>
+        /// Function delate Data in DB and Refresh GridView
+        /// </summary>
+        /// <param name="id"></param>
         public void DeleteRow(int id)
         {
             DBProduct productTable = new DBProduct(dbConnection);
@@ -127,6 +136,13 @@ namespace ShopApplication.Models
             dataGridView.Refresh();
         }
 
+        /// <summary>
+        /// Function adds Data in DB and Refresh GridView
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="ean"></param>
+        /// <param name="net"></param>
+        /// <param name="tax"></param>
         public void AddRow(string name, int ean, decimal net, int tax)
         {
             DBProduct productTable = new DBProduct(dbConnection);
@@ -135,6 +151,14 @@ namespace ShopApplication.Models
             dataGridView.Refresh();
         }
 
+        /// <summary>
+        /// Function Updetes Data in DB and Refresh GridView
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <param name="ean"></param>
+        /// <param name="net"></param>
+        /// <param name="tax"></param>
         public void UpdateRow(int id, string name, int ean, decimal net, int tax)
         {
             DBProduct productTable = new DBProduct(dbConnection);
@@ -160,14 +184,14 @@ namespace ShopApplication.Models
 
     }
 
-    public class DataGridViewProductRow
-    {
-        int Id;
-        string Nazwa;
-        int Ean;
-        decimal Cena;
-        int Podatek;
-    }
+    //public class DataGridViewProductRow
+    //{
+    //    int Id;
+    //    string Nazwa;
+    //    int Ean;
+    //    decimal Cena;
+    //    int Podatek;
+    //}
 
 }
 
