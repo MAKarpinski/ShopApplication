@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDBConnect = new System.Windows.Forms.Button();
-            this.btnAddTable = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnChangeSettings = new System.Windows.Forms.Button();
             this.btnDeleteRow = new System.Windows.Forms.Button();
@@ -41,32 +39,10 @@
             this.txbVal = new System.Windows.Forms.TextBox();
             this.txbTax = new System.Windows.Forms.TextBox();
             this.txbId = new System.Windows.Forms.TextBox();
+            this.btnDBConnect = new System.Windows.Forms.Button();
+            this.btnAddTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnDBConnect
-            // 
-            this.btnDBConnect.Enabled = false;
-            this.btnDBConnect.Location = new System.Drawing.Point(209, 26);
-            this.btnDBConnect.Name = "btnDBConnect";
-            this.btnDBConnect.Size = new System.Drawing.Size(181, 68);
-            this.btnDBConnect.TabIndex = 0;
-            this.btnDBConnect.Text = "Połącz z Bazą";
-            this.btnDBConnect.UseVisualStyleBackColor = true;
-            this.btnDBConnect.Visible = false;
-            this.btnDBConnect.Click += new System.EventHandler(this.btnDBConnect_Click);
-            // 
-            // btnAddTable
-            // 
-            this.btnAddTable.Enabled = false;
-            this.btnAddTable.Location = new System.Drawing.Point(396, 26);
-            this.btnAddTable.Name = "btnAddTable";
-            this.btnAddTable.Size = new System.Drawing.Size(181, 68);
-            this.btnAddTable.TabIndex = 1;
-            this.btnAddTable.Text = "Dodaj Bazę";
-            this.btnAddTable.UseVisualStyleBackColor = true;
-            this.btnAddTable.Visible = false;
-            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
             // 
             // dataGridView1
             // 
@@ -164,6 +140,30 @@
             this.txbId.Size = new System.Drawing.Size(62, 20);
             this.txbId.TabIndex = 12;
             // 
+            // btnDBConnect
+            // 
+            this.btnDBConnect.Enabled = false;
+            this.btnDBConnect.Location = new System.Drawing.Point(209, 26);
+            this.btnDBConnect.Name = "btnDBConnect";
+            this.btnDBConnect.Size = new System.Drawing.Size(181, 68);
+            this.btnDBConnect.TabIndex = 0;
+            this.btnDBConnect.Text = "Połącz z Bazą";
+            this.btnDBConnect.UseVisualStyleBackColor = true;
+            this.btnDBConnect.Visible = false;
+            this.btnDBConnect.Click += new System.EventHandler(this.btnDBConnect_Click);
+            // 
+            // btnAddTable
+            // 
+            this.btnAddTable.Enabled = false;
+            this.btnAddTable.Location = new System.Drawing.Point(396, 26);
+            this.btnAddTable.Name = "btnAddTable";
+            this.btnAddTable.Size = new System.Drawing.Size(181, 68);
+            this.btnAddTable.TabIndex = 1;
+            this.btnAddTable.Text = "Dodaj Bazę";
+            this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Visible = false;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,9 +192,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnDBConnect;
-        private System.Windows.Forms.Button btnAddTable;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnChangeSettings;
         private System.Windows.Forms.Button btnDeleteRow;
@@ -206,6 +203,8 @@
         private System.Windows.Forms.TextBox txbVal;
         private System.Windows.Forms.TextBox txbTax;
         private System.Windows.Forms.TextBox txbId;
+        private System.Windows.Forms.Button btnDBConnect;
+        private System.Windows.Forms.Button btnAddTable;
     }
 }
 

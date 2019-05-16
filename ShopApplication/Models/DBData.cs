@@ -113,9 +113,6 @@ namespace ShopApplication.Models
             /// <param name="path"></param>
             public DBCreate(string serverName, string databaseName, string userName, string userPassword, string path, int size = 5)
             {
-
-                //string connectionStr = @"Data Source=USER-KOMPUTER\SERWERSQL2012;Initial Catalog=ShopDB;User ID=sa;Password=P@ssw0rd";
-                //connectionString = @"Data Source = USER - KOMPUTER\SERWERSQL2012; Initial Catalog = ShopDB; User ID = sa; Password = P@ssw0rd;";
                 //SqlConnection connectionString = new SqlConnection("Server=localhost;Integrated security=SSPI;database=master");
                 connectionString = @"Server = " + serverName + "; User ID = " + userName + "; Password = " + userPassword + "; database = master";
                 //TODO: chenge into  StringBuilder

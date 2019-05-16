@@ -60,27 +60,27 @@ namespace ShopApplication
             gridViewManager.InitializeDataGridView(this.dataGridView1, connection);
         }
 
-        private void CreateTableTest()
-        {
-            DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB5", "", "");
-            DBTableTest.DBTestTableCreator testCreator = new DBTableTest.DBTestTableCreator();
-            testCreator.CreateTest(Table.Product, dbConn);
+        //private void CreateTableTest()
+        //{
+        //    DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB5", "", "");
+        //    DBTableTest.DBTestTableCreator testCreator = new DBTableTest.DBTestTableCreator();
+        //    testCreator.CreateTest(Table.Product, dbConn);
 
 
-        }
+        //}
 
-        private void CreateDBTest()
-        {
-            DBData.DBCreate dbCreate = new DBData.DBCreate(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB8", "", "", "C:\\Projekty");
+        //private void CreateDBTest()
+        //{
+        //    DBData.DBCreate dbCreate = new DBData.DBCreate(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB8", "", "", "C:\\Projekty");
 
-            if (dbCreate.Create())
-            {
-                MessageBox.Show("Baza Danych została utworzona");
-            }
-            else
-                MessageBox.Show("Nie udało się utworzyć Bazy Danych!");
+        //    if (dbCreate.Create())
+        //    {
+        //        MessageBox.Show("Baza Danych została utworzona");
+        //    }
+        //    else
+        //        MessageBox.Show("Nie udało się utworzyć Bazy Danych!");
 
-        }
+        //}
 
         private void ErrorTest()
         {

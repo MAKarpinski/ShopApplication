@@ -11,7 +11,7 @@ namespace ShopApplication.Models
     {
         public DBConnection connection;
         public bool connectionOK = false;
-
+        
         public AppConfig()
         {
             //string serwer = ConfigurationManager.AppSettings["SerwerName"];

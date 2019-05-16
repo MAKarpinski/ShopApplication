@@ -92,7 +92,7 @@ namespace ShopApplication
             }
             else
             {
-                MessageBox.Show("Proszę wypełnic wszystkie dane połączenia");
+                MessageBox.Show("Proszę wypełnić wszystkie dane połączenia");
             }
                 //Test Connection
 
@@ -101,6 +101,80 @@ namespace ShopApplication
             //this.txbBaza.Text = ConfigurationManager.AppSettings["DatabaseName"];
             //this.txbUzytkownik.Text = ConfigurationManager.AppSettings["UserName"];
             //this.txbHaslo.Text = ConfigurationManager.AppSettings["UserPassword"];
+
+        }
+
+        //private void CreateTable()
+        //{
+        //    DBConnection dbConn = new DBConnection(@"USER-KOMPUTER\SERWERSQL2012", "ShopDB5", "", "");
+        //    DBTableTest.DBTestTableCreator testCreator = new DBTableTest.DBTestTableCreator();
+        //    testCreator.CreateTest(Table.Product, dbConn);
+
+
+        //}
+
+        private bool CreateDB(string dbPath)
+        {
+            if (this.txbSerwer.Text != "" && this.txbBaza.Text != "" && this.txbUzytkownik.Text != "" && this.txbHaslo.Text != "" && txbDBPath.Text != "")
+            {
+                //Create Database 
+                DBData.DBCreate dbCreate = new DBData.DBCreate(txbSerwer.Text, txbBaza.Text, txbUzytkownik.Text, txbHaslo.Text, dbPath);
+
+                if (dbCreate.Create())
+                {
+                    MessageBox.Show("Baza Danych została utworzona");
+                }
+                else
+                    MessageBox.Show("Nie udało się utworzyć Bazy Danych!");
+
+                //New Connection          
+
+                DBConnection connection = new DBConnection(this.txbSerwer.Text, this.txbBaza.Text, this.txbUzytkownik.Text, this.txbHaslo.Text);
+
+                if (connection.TestConnection())
+                {
+                    //MessageBox.Show("Test połączenia przebiegł pozytywnie.\nDane zostaną zaktualizowane w pliklu konfiguracyjnym");
+                    connection.SaveToConfigFile();
+                    //appConfig.connection = connection;
+                    //appConfig.connectionOK = true;
+
+                    ///Create Tables
+                    DBProduct productTable = new DBProduct(connection);
+                    productTable.Create();
+                    DBPrice priceTable = new DBPrice(connection);
+                    priceTable.Create();
+
+                    //Initialize Gridview on Main Form
+                    this.mainForm.InitGridView(connection);
+
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Test połączenia zakończył się niepowodzeniem!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Proszę wypełnić wszystkie dane połączenia");
+            }
+
+            //Test Conn
+
+
+
+            return false;
+
+
+        }
+
+        private void btnDBCreate_Click(object sender, EventArgs e)
+        {
+            if (CreateDB(@txbDBPath.Text))
+            {
+                MessageBox.Show("Baza Utworzona z powodzeniem");
+            }
 
         }
     }

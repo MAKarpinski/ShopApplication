@@ -38,6 +38,9 @@
             this.txbUzytkownik = new System.Windows.Forms.TextBox();
             this.txbHaslo = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnDBCreate = new System.Windows.Forms.Button();
+            this.txbDBPath = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSave
@@ -132,11 +135,42 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnDBCreate
+            // 
+            this.btnDBCreate.Location = new System.Drawing.Point(262, 216);
+            this.btnDBCreate.Name = "btnDBCreate";
+            this.btnDBCreate.Size = new System.Drawing.Size(160, 54);
+            this.btnDBCreate.TabIndex = 16;
+            this.btnDBCreate.Text = "Utwórz Baze danych";
+            this.btnDBCreate.UseVisualStyleBackColor = true;
+            this.btnDBCreate.Click += new System.EventHandler(this.btnDBCreate_Click);
+            // 
+            // txbDBPath
+            // 
+            this.txbDBPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.txbDBPath.Location = new System.Drawing.Point(168, 173);
+            this.txbDBPath.Name = "txbDBPath";
+            this.txbDBPath.Size = new System.Drawing.Size(354, 23);
+            this.txbDBPath.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(12, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Katalog Bazy Danych";
+            // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 348);
+            this.Controls.Add(this.txbDBPath);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.btnDBCreate);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txbHaslo);
             this.Controls.Add(this.txbUzytkownik);
@@ -167,5 +201,8 @@
         private System.Windows.Forms.TextBox txbUzytkownik;
         private System.Windows.Forms.TextBox txbHaslo;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnDBCreate;
+        private System.Windows.Forms.TextBox txbDBPath;
+        private System.Windows.Forms.Label label5;
     }
 }
